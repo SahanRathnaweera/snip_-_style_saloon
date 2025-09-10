@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings - Snip & Style Salon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff5f6d;
+            --secondary: #ffc371;
+            --accent: #7d3c98;
+            --light: #fff8f6;
+            --dark: #1f1f1f;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .admin-header {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .admin-header h1 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 2.2rem;
+        }
+        
+        .admin-header p {
+            margin: 5px 0 0;
+            opacity: 0.9;
+        }
+        
+        .admin-nav {
+            background: var(--dark);
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 10px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .admin-nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .admin-content {
+            padding: 30px;
+        }
+        
+        .settings-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: var(--light);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .settings-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .btn-salon {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .btn-salon:hover {
+            background: linear-gradient(145deg, var(--secondary), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: white;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(255, 95, 109, 0.25);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        
+        .slider:before {
+            position: absolute;
+
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .badge-on {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .badge-off {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--dark);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-cogs me-2"></i>Snip & Style Admin Panel</h1>
+            <p>Control and manage your salon website settings</p>
+        </div>
+        
+        <div class="admin-nav">
+            <div>
+                <a href="index.html"><i class="fas fa-home me-1"></i> Back to Website</a>
+            </div>
+            <div>
+                <a href="#"><i class="fas fa-user me-1"></i> Admin User</a>
+                <a href="#"><i class="fas fa-sign-out-alt me-1"></i> Logout</a>
+            </div>
+        </div>
+        
+        <div class="admin-content">
+       
+            <div class="settings-section">
+                <h3><i class="fas fa-wrench me-2"></i>General Settings</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Salon Name</label>
+                        <input type="text" class="form-control" value="Snip & Style Unisex Salon">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Contact Email</label>
+                        <input type="email" class="form-control" value="info@snipandstyle.com">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" value="+94 77 123 4567">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Website Theme Color</label>
+                        <select class="form-select">
+                            <option selected>Pink/Orange Gradient</option>
+                            <option>Purple/Blue Gradient</option>
+                            <option>Green/Teal Gradient</option>
+                            <option>Custom...</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-salon">Save General Settings</button>
+            </div>
+            
+            
+            <div class="settings-section">
+                <h3><i class="fas fa-clock me-2"></i>Business Hours</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Opening Time</label>
+                        <input type="time" class="form-control" value="09:00">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Closing Time</label>
+                        <input type="time" class="form-control" value="19:00">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>Day</th>
+                                <th>Open/Closed</th>
+                                <th>Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td>9:00 AM - 7:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td>9:00 AM - 7:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td>9:00 AM - 7:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td>9:00 AM - 7:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td>9:00 AM - 7:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td>10:00 AM - 6:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td>Closed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-salon">Save Business Hours</button>
+            </div>
+            
+          
+            <div class="settings-section">
+                <h3><i class="fas fa-calendar-check me-2"></i>Online Booking Settings</h3>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Online Booking Status</label>
+                        <div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span class="status-badge badge-on ms-2">Enabled</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Advance Booking Limit (days)</label>
+                        <input type="number" class="form-control" value="30">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Appointment Time Interval</label>
+                        <select class="form-select">
+                            <option>15 minutes</option>
+                            <option selected>30 minutes</option>
+                            <option>60 minutes</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Buffer Time Between Appointments</label>
+                        <select class="form-select">
+                            <option selected>5 minutes</option>
+                            <option>10 minutes</option>
+                            <option>15 minutes</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-salon">Save Booking Settings</button>
+            </div>
+            
+            
+            <div class="settings-section">
+                <h3><i class="fas fa-bell me-2"></i>Notification Settings</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email Notifications</label>
+                        <div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span class="status-badge badge-on ms-2">Enabled</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">SMS Notifications</label>
+                        <div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="status-badge badge-off ms-2">Disabled</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Admin Notification Email</label>
+                        <input type="email" class="form-control" value="admin@snipandstyle.com">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Send Reminders Before</label>
+                        <select class="form-select">
+                            <option>1 hour</option>
+                            <option selected>24 hours</option>
+                            <option>48 hours</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-salon">Save Notification Settings</button>
+            </div>
+            
+          
+            <div class="settings-section">
+                <h3><i class="fas fa-tools me-2"></i>Maintenance Mode</h3>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>When enabled, your website will be temporarily unavailable to visitors.
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Maintenance Mode</label>
+                        <div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="status-badge badge-off ms-2">Disabled</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Maintenance Message</label>
+                        <textarea class="form-control" rows="2">Our website is currently under maintenance. We'll be back soon!</textarea>
+                    </div>
+                </div>
+                <button class="btn btn-salon">Save Maintenance Settings</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p class="mb-0">© 2025 Snip & Style Salon | Admin Control Panel</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    
+        document.querySelectorAll('.toggle-switch input').forEach(switchInput => {
+            switchInput.addEventListener('change', function() {
+                const statusBadge = this.parentElement.nextElementSibling;
+                if (this.checked) {
+                    statusBadge.className = 'status-badge badge-on ms-2';
+                    statusBadge.textContent = 'Enabled';
+                } else {
+                    statusBadge.className = 'status-badge badge-off ms-2';
+                    statusBadge.textContent = 'Disabled';
+                }
+            });
+        });
+        
+  
+        document.querySelectorAll('.btn-salon').forEach(button => {
+            button.addEventListener('click', function() {
+                const section = this.closest('.settings-section');
+                const sectionName = section.querySelector('h3').textContent;
+                alert(`Settings saved for ${sectionName}`);
+            });
+        });
+    </script>
+
+
+
+
+
+	
+	<script src="js/jquery-3.4.1.min.js"></script>
+
+	
+	<script src="js/popper.min.js"></script> 
+	<script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>

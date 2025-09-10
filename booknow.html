@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snip & Style | Book Now</title>
+  <!-- Bootstrap -->
+	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	<style>
+	  body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+    }
+
+    .booking-section {
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .booking-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .booking-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #880e4f;
+    }
+
+    .booking-form .form-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .booking-form input,
+    .booking-form select,
+    .booking-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s ease;
+    }
+
+    .booking-form input:focus,
+    .booking-form select:focus,
+    .booking-form textarea:focus {
+      border-color: #ad1457;
+      outline: none;
+    }
+
+    .booknow-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #ad1457, #6a1b9a);
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .booknow-btn:hover {
+      background: linear-gradient(135deg, #ec407a, #7b1fa2);
+    }
+
+    .error-message {
+      color: red;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <section class="booking-section">
+    <div class="booking-container">
+      <h2>Book Your Appointment</h2>
+      <form id="bookingForm" action="submit_booking.php" method="post" class="booking-form" novalidate>
+        
+        <div class="form-row">
+          <input type="text" name="fullname" id="fullname" placeholder="Full Name" required>
+          <div id="fullnameError" class="error-message"></div>
+        </div>
+        
+        <div class="form-row">
+          <input type="tel" name="phone" id="phone" placeholder="Phone Number" required>
+          <div id="phoneError" class="error-message"></div>
+        </div>
+        
+        <div class="form-row">
+          <input type="email" name="email" id="email" placeholder="Email Address" required>
+          <div id="emailError" class="error-message"></div>
+        </div>
+        
+        <div class="form-row">
+          <select name="service" id="service" required>
+            <option value="">Select a Service</option>
+            <option value="haircut">Haircut</option>
+            <option value="coloring">Hair Coloring</option>
+            <option value="styling">Hair Styling</option>
+            <option value="facial">Facial</option>
+          </select>
+          <div id="serviceError" class="error-message"></div>
+        </div>
+        
+        <div class="form-row">
+          <input type="date" name="date" id="date" required>
+          <div id="dateError" class="error-message"></div>
+        </div>
+        
+        <div class="form-row">
+          <input type="time" name="time" id="time" required>
+          <div id="timeError" class="error-message"></div>
+        </div>
+        
+        <div class="form-row">
+          <textarea name="feedback" id="feedback" rows="3" placeholder="You can give your feedback here" required></textarea>
+          <div id="feedbackError" class="error-message"></div>
+        </div>
+        
+        <button type="submit" class="booknow-btn">Confirm Booking</button>
+      </form>
+    </div>
+  </section>	
+
+  <section>
+    <center>
+      <a href="index.html" 
+        style="display: inline-flex; align-items: center; background:linear-gradient(145deg, #ff5f6d, #ffc371);
+               color:white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold;
+               font-family: Poppins, sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        H O M E
+      </a>
+    </center>
+  </section> 
+<br>
+  <script>
+	  document.getElementById("bookingForm").addEventListener("submit", function(event) {
+      
+      if (!this.checkValidity()) {
+        return; 
+      }
+
+      event.preventDefault(); // prevent page refresh
+      alert("You have successfully booked your chance!");
+    });
+	  
+	  
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // stop until validation passes
+      let valid = true;
+
+      // Clear old errors
+      document.querySelectorAll(".error-message").forEach(el => el.innerText = "");
+
+      let fullname = document.getElementById("fullname").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let service = document.getElementById("service").value;
+      let date = document.getElementById("date").value;
+      let time = document.getElementById("time").value;
+      let feedback = document.getElementById("feedback").value.trim();
+
+      // Full Name
+      
+let namePattern = /^[A-Za-z\s]+$/;
+if (!namePattern.test(fullname)) {
+  document.getElementById("fullnameError").innerText = "Full name should contain only letters and spaces.";
+  valid = false;
+} else if (fullname.length < 4) {
+  document.getElementById("fullnameError").innerText = "Full name must be at least 4 characters.";
+  valid = false;
+}
+
+
+      // Phone validation (10 digits)
+      let phonePattern = /^[0-9]{10}$/;
+      if (!phonePattern.test(phone)) {
+        document.getElementById("phoneError").innerText = "Phone number must be exactly 10 digits.";
+        valid = false;
+      }
+
+      // Email validation
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").innerText = "Enter a valid email address.";
+        valid = false;
+      }
+
+      // Service validation
+      
+
+      // Date validation
+      if (!date) {
+        document.getElementById("dateError").innerText = "Please select a booking date.";
+        valid = false;
+      } else {
+        let today = new Date().toISOString().split("T")[0];
+        if (date < today) {
+          document.getElementById("dateError").innerText = "Booking date must be today or a future date.";
+          valid = false;
+        }
+      }
+
+      // Time validation
+      if (!time) {
+        document.getElementById("timeError").innerText = "Please select a booking time.";
+        valid = false;
+      }
+
+      // Feedback validation
+      if (feedback.length < 5) {
+        document.getElementById("feedbackError").innerText = "Please provide feedback (at least 5 characters).";
+        valid = false;
+      }
+
+      // Submit if valid
+      if (valid) {
+        this.submit();
+      }
+    });
+  </script>
+
+  <script src="form-validation.js"></script>
+
+
+
+
+	<script src="js/jquery-3.4.1.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/popper.min.js"></script> 
+	<script src="js/bootstrap-4.4.1.js"></script>
+  
+	
+  </body>
+</html>

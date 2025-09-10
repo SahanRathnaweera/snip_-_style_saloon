@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SNIP & style store </title>
+    <!-- Bootstrap -->
+	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	  <style>
+	  
+	  body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffaf8;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffdde1;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #c94f7c;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .product-card {
+      background-color: #FAEEEE;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .product-name {
+      font-weight: 600;
+      margin: 0.8rem 0 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: #c94f7c;
+      font-size: 1.1rem;
+    }
+	  
+		  .button {
+		background: linear-gradient(145deg, #ff5f6d, #ffc371);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}	  
+	.button:hover {
+  background:linear-gradient(145deg, #ff5f6d, #ffc371);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+		
+		  }
+		.button:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 15px rgba(255, 95, 109, 0.3);
+  }	  
+			  
+			  
+			  
+		    
+	  
+	  
+	  
+	  
+	  
+	  
+	  </style>
+	
+  </head>
+  <body>
+  	<!-- body code goes here -->
+<header>
+  <h1><b>Snip & Style – Salon Store</b></h1>
+  <p style="color:#555; font-size: 1.1rem;"><b>Unisex Premium Salon Products – Handpicked For You</b></p>
+</header>
+
+<section class="product-grid">
+  <!-- Repeat this block for each product -->
+  <div class="product-card">
+    <img src="argon oil store.jpeg" alt="Argan Oil Hair Serum">
+    <p class="product-name">Argan Oil Hair Serum</p>
+    <p class="product-desc">Frizz control, deep shine, and heat protection.</p>
+    <p class="product-price">LKR 3,500</p>
+  </div>
+
+  <div class="product-card">
+    <img src="keratinestore.jpeg" alt="Keratin Repair Shampoo">
+    <p class="product-name">Keratin Repair Shampoo</p>
+    <p class="product-desc">Restores damaged hair and smooths strands.</p>
+    <p class="product-price">LKR 2,950</p>
+  </div>
+
+  <div class="product-card">
+    <img src="combset.jpeg" alt="Comb Set">
+    <p class="product-name">Styling Comb Set (5 pcs)</p>
+    <p class="product-desc">Heat-resistant and anti-static for professionals.</p>
+    <p class="product-price">LKR 1,800</p>
+  </div>
+
+
+  <div class="product-card"><img src="breadhair.jpeg"><p class="product-name">Beard & Hair Growth Oil</p><p class="product-desc">Natural growth booster for beard and scalp.</p><p class="product-price">LKR 2,300</p></div>
+  <div class="product-card"><img src="straitbrush.jpeg"><p class="product-name">Ceramic Straightener Brush</p><p class="product-desc">Quick and safe styling for all.</p><p class="product-price">LKR 5,800</p></div>
+  <div class="product-card"><img src="hairclay.jpeg"><p class="product-name">Matte Hair Clay</p><p class="product-desc">Strong hold with a matte finish.</p><p class="product-price">LKR 1,950</p></div>
+  <div class="product-card"><img src="leaveconditioner.jpeg"><p class="product-name">Leave-In Conditioner Mist</p><p class="product-desc">Hydrates and detangles all hair types.</p><p class="product-price">LKR 2,500</p></div>
+  <div class="product-card"><img src="hairdrier.jpeg"><p class="product-name">Salon Hair Dryer</p><p class="product-desc">Fast drying with ionic tech.</p><p class="product-price">LKR 7,200</p></div>
+  <div class="product-card"><img src="curlhair.jpeg"><p class="product-name">Curl Defining Cream</p><p class="product-desc">Soft, defined curls with no crunch.</p><p class="product-price">LKR 3,250</p></div>
+  <div class="product-card"><img src="refresh.jpeg"><p class="product-name">Scalp Detox Scrub</p><p class="product-desc">Refreshes scalp and removes buildup.</p><p class="product-price">LKR 2,000</p></div>
+  <div class="product-card"><img src="lip.jpeg"><p class="product-name">Lip & Cheek Tint</p><p class="product-desc">Glow that lasts all day.</p><p class="product-price">LKR 1,600</p></div>
+  <div class="product-card"><img src="oilclear.jpeg"><p class="product-name">Exfoliating Face Cleanser</p><p class="product-desc">For a fresh and glowing face.</p><p class="product-price">LKR 2,750</p></div>
+  <div class="product-card"><img src="blackhead.jpeg"><p class="product-name">Blackhead Remover</p><p class="product-desc">Gentle vacuum suction tool for pores.</p><p class="product-price">LKR 3,900</p></div>
+	  </section>
+	<hr style="border: none; height: 3px; background-color: white; margin: 20px 0;">
+  
+	  <section style="text-align: center; padding: 30px;">
+  <div style="display: inline-flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+
+    <!-- WhatsApp Button -->
+    <section style="background-color: #f5f5f5; padding: 20px 0; text-align: center;">
+  <div style="display: inline-flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/94769264925" target="_blank"
+       style="display: inline-flex; align-items: center; background:linear-gradient(145deg, #ff5f6d, #ffc371);color:white;
+              padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold;
+              font-family: Poppins, sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+           alt="WhatsApp" 
+           style="width: 20px; height: 20px; margin-right: 10px;">
+      Order on WhatsApp
+    </a>
+
+    <!-- Home Button -->
+    <a href="index.html"
+       style="display: inline-flex; align-items: center; background:linear-gradient(145deg, #ff5f6d, #ffc371);color:white;
+              padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold;
+              font-family: Poppins, sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      H O M E
+    </a>
+
+    <!-- Previous Button -->
+    <a href="store2.html" target="_blank"
+       style="display: inline-flex; align-items: center; background:linear-gradient(145deg, #ff5f6d, #ffc371);color:white;
+              padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold;
+              font-family: Poppins, sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    N E X T 
+    </a>
+
+  </div>
+</section>
+
+<br><br><br>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+	<script src="js/jquery-3.4.1.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/popper.min.js"></script> 
+	<script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>

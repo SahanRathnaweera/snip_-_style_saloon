@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PayNow</title>
+  
+	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	<style>
+    body {
+      background: #f7f7f7;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .payment-card {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    .form-label {
+      font-weight: 600;
+    }
+    .btn-pay {
+      background: #ff4d6d;
+      border: none;
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 12px;
+      width: 100%;
+      color: white;
+      transition: 0.3s ease;
+    }
+    .btn-pay:hover {
+      background: #e63956;
+    }
+    .error-message {
+      color: red;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  
+<div class="container">
+  <div class="payment-card">
+    <h3 class="text-center mb-4"><b>Pay Here</b></h3>
+
+    <form id="paymentForm" novalidate>
+      <!-- Customer Details -->
+      <div class="mb-3">
+        <label class="form-label"> Name</label>
+        <input type="text" id="fullname" class="form-control" placeholder="Enter your name" required>
+        <div id="fullnameError" class="error-message"></div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email Address</label>
+        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+        <div id="emailError" class="error-message"></div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" id="phone" class="form-control" placeholder="07XXXXXXXX" required>
+        <div id="phoneError" class="error-message"></div>
+      </div>
+
+      
+      
+      
+      <div class="mb-3">
+        <label class="form-label">Card Number</label>
+        <input type="text" id="card" class="form-control" placeholder="1234567812345678" maxlength="16" required>
+        <div id="cardError" class="error-message"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Expiry Date</label>
+          <input type="text" id="expiry" class="form-control" placeholder="MM/YY" required>
+          <div id="expiryError" class="error-message"></div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">CVV</label>
+          <input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
+          <div id="cvvError" class="error-message"></div>
+        </div>
+      </div>
+
+      
+      <button type="submit" class="btn-pay">Pay Now</button>
+    </form>
+  </div>
+</div>
+
+<center>
+  <a href="index.html" 
+     style="display: inline-flex; align-items: center; background:linear-gradient(145deg, #ff5f6d, #ffc371);color:white;
+            padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold;
+            font-family: Poppins, sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    H O M E
+  </a>
+</center>
+
+<footer class="text-center mt-4 mb-2 text-muted">
+  © 2025 Snip & Style salon | All Rights Reserved
+</footer>
+
+<script>
+document.getElementById("paymentForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  
+  document.querySelectorAll(".error-message").forEach(el => el.innerText = "");
+
+  let fullname = document.getElementById("fullname").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  
+  let card = document.getElementById("card").value.trim();
+  let expiry = document.getElementById("expiry").value.trim();
+  let cvv = document.getElementById("cvv").value.trim();
+
+ 
+  let namePattern = /^[A-Za-z\s]+$/;
+  if (!namePattern.test(fullname) || fullname.length < 4) {
+    document.getElementById("fullnameError").innerText = "Enter a valid  name (letters only, min 4 characters).";
+    valid = false;
+  }
+
+  
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!emailPattern.test(email)) {
+    document.getElementById("emailError").innerText = "Enter a valid email address.";
+    valid = false;
+  }
+
+  
+  let phonePattern = /^[0-9]{10}$/;
+  if (!phonePattern.test(phone)) {
+    document.getElementById("phoneError").innerText = "Phone must be 10 digits.";
+    valid = false;
+  }
+
+ 
+  let cardPattern = /^[0-9]{16}$/;
+  if (!cardPattern.test(card)) {
+    document.getElementById("cardError").innerText = "Card number must be 16 digits.";
+    valid = false;
+  }
+
+ 
+  let expiryPattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+  if (!expiryPattern.test(expiry)) {
+    document.getElementById("expiryError").innerText = "Enter expiry as MM/YY.";
+    valid = false;
+  }
+
+ 
+  let cvvPattern = /^[0-9]{3}$/;
+  if (!cvvPattern.test(cvv)) {
+    document.getElementById("cvvError").innerText = "CVV must be 3 digits.";
+    valid = false;
+  }
+
+  if (valid) {
+    alert("✅ Payment Successful! Thank you for your booking.");
+    window.location.href = "index.html"; // redirect to home or success page
+  }
+});
+</script>
+
+
+
+
+	
+	<script src="js/jquery-3.4.1.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/popper.min.js"></script> 
+	<script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>
