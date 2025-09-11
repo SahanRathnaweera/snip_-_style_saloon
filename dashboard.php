@@ -100,7 +100,6 @@ for ($m = 1; $m <= 12; $m++) {
       <a href="appoinment.php">Stylist Names</a>
       <a href="appoinment.php">Customers</a>
       <a href="appoinment.php">Paid Status</a>
-      <a href="settings.html">Settings</a>
     </div>
 
     <div class="content">

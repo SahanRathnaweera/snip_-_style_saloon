@@ -81,7 +81,7 @@ $rows = $db->query("SELECT * FROM bookings ORDER BY date DESC, time DESC")->fetc
           <tr>
             <th>Customers</th>
             <th>Service</th>
-            <th>Stylist Names</th>
+            
             <th>Date</th>
             <th>Time</th>
             <th>Paid Status</th>
@@ -94,7 +94,7 @@ $rows = $db->query("SELECT * FROM bookings ORDER BY date DESC, time DESC")->fetc
             <tr>
               <td><?php echo htmlspecialchars($row['fullname']); ?></td>
               <td><?php echo htmlspecialchars($row['service']); ?></td>
-              <td>--</td>
+              
               <td><?php echo htmlspecialchars($row['date']); ?></td>
               <td><?php echo htmlspecialchars($row['time']); ?></td>
               <td>
